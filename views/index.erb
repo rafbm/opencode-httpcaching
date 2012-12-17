@@ -1,1 +1,30 @@
-<p>Welcome to Sinatra Kickstart.</p>
+<h2>Latest Bacon News</h2>
+
+<% @posts.each do |post| %>
+  <article>
+    <h3>
+      <a href="/posts/<%= post.id %>">
+        <%= post.title %>
+      </a>
+    </h3>
+    <p><p>Updated on <%= post.updated_at.strftime('%b %e, %Y @ %k:%M') %></p></p>
+    <div>
+      <%= post.body.truncate(400) %>
+    </div>
+  </article>
+<% end %>
+
+<% if @songs %>
+  <h2>Top Bacon Charts</h2>
+  <ol>
+    <% @songs.each do |song| %>
+      <li>
+        <img src="<%= song.icon %>" width="100">
+        <span>
+          <b><%= song.name %></b><br>
+          <%= song.artist %>
+        </span>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

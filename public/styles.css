@@ -1,4 +1,23 @@
 body {
-  font: 16px 'Helvetica Neue';
-  padding: 2em;
+  font: 16px/1.4 'Open Sans';
+  padding: 4%;
+  max-width: 600px;
+  margin: auto;
 }
+
+h1 { text-align: center }
+
+h2, h3, h4 { margin: 2em 0 .5em }
+
+ol {
+  padding: 0;
+}
+  ol img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  ol span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+  }

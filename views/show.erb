@@ -1,0 +1,11 @@
+<nav>
+  <a href="/">‹ Back</a>
+</nav>
+
+<article>
+  <h2><%= @post.title %></h2>
+  <p>Updated on <%= @post.updated_at.strftime('%b %e, %Y @ %k:%M') %></p>
+  <div>
+    <%= @post.body %>
+  </div>
+</article>

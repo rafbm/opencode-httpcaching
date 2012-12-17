@@ -1,14 +1,21 @@
-require 'sinatra'
-require 'sprockets'
-require 'coffee-script'
+require 'rubygems'
+require 'bundler'
+Bundler.require
 
-map '/assets' do
-  assets = Sprockets::Environment.new
-  assets.append_path 'public'
-  run assets
-end
+Dir['./lib/*'].each{ |file| require file }
 
-map '/' do
-  require './app'
-  run Sinatra::Application
-end
+ActiveRecord::Base.establish_connection(
+  adapter: 'mysql2',
+  encoding: 'utf8',
+  reconnect: false,
+  database: 'bacon',
+  pool: 5,
+  username: 'root',
+  socket: '/tmp/mysql.sock',
+)
+
+# Request an Rdio API key here: http://developer.rdio.com/
+Rdio.setup(key: YOUR_RDIO_APP_KEY, secret: YOUR_RDIO_APP_SECRET)
+
+require './app'
+run Sinatra::Application
